@@ -93,7 +93,8 @@ JiraCommunicationHandler.prototype.getDataWithJSONP = function(callback, request
 
 JiraCommunicationHandler.prototype.getDataWithJSON = function(callback, requestUrl) {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://cors-anywhere.herokuapp.com/" + requestUrl)
+	//xhr.open("GET", "https://cors-anywhere.herokuapp.com/" + requestUrl)
+	xhr.open("GET", "http://localhost:8080/" + requestUrl)
 	if (this.username !== "") {
 		this.setAuthorizationHeader(xhr);
 	}
