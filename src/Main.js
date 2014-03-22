@@ -216,16 +216,16 @@ function setConfigFromBooleanCookie(elementId, cookie, def) {
 		element.checked = def;
 	}
 }
-
+// Enableing checkboxes and selecting what to show by deafult on cards. 
 function setConfigFromCookies() {
 	var location = Cookies.get("jiraLocation") || "https://jira.caplin.com";
 	if (location != null && document.getElementById("jiraLocation") != null) {
 		document.getElementById("jiraLocation").value = location;
         setConfigFromBooleanCookie("color", "colorEnabled", true);
-		setConfigFromBooleanCookie("qrcode", "qrCodeEnabled", true);
+		setConfigFromBooleanCookie("qrcode", "qrCodeEnabled", false);
 		setConfigFromBooleanCookie("parentdescription", "parentDescriptionEnabled", true);
 		setConfigFromBooleanCookie("componentdescription", "componentEnabled", true);
-		setConfigFromBooleanCookie("tagdescription", "tagEnabled", false);
+		setConfigFromBooleanCookie("tagdescription", "tagEnabled", true);
 		setConfigFromBooleanCookie("businessvalue", "businessValueEnabled", false);
         setConfigFromBooleanCookie("epicsEnabled", "epicsEnabled", true);
 	//	document.getElementById("project").value = Cookies.get("projectName") || "";

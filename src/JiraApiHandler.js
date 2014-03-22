@@ -91,13 +91,15 @@ JiraApiHandler.prototype.createCard = function (jira) {
 		}
 		componentString = componentsString.substring(0, componentsString.length - 1) + ":";
 	}
+	
+//var Card = function (issueId, issueUrl, issueType, storypoints, summary, component, tag, businessValue, epic, parentIssueId, subtasks)	
 	var card = new Card(jira.key,
 		this.baseUrl + "/browse/" + jira.key,
 		jira.fields.issuetype.name,
-		jira.fields["customfield_10243"],
+		jira.fields["customfield_10004"],
 		jira.fields.summary,
-		componentString,
-		jira.fields["customfield_10151"],
+		jira.fields.assignee.displayName,
+		jira.fields.issuetype.name,
         jira.fields["customfield_10261"],
         jira.fields["customfield_10870"],
 		jira.fields.parent ? jira.fields.parent.key : null,
