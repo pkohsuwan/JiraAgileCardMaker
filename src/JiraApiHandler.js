@@ -92,17 +92,30 @@ JiraApiHandler.prototype.createCard = function (jira) {
 		componentString = componentsString.substring(0, componentsString.length - 1) + ":";
 	}
 	
-//var Card = function (issueId, issueUrl, issueType, storypoints, summary, component, tag, businessValue, epic, parentIssueId, subtasks)	
-	var card = new Card(jira.key,
+
+	//var Card = function (issueId, issueUrl, issueType, estimate, summary, assignee, component, tag, epic, parentIssueId, subtasks) {
+	var card = new Card(
+		//Issue id
+		jira.key,
+		// URL
 		this.baseUrl + "/browse/" + jira.key,
+		//Story or Bug
 		jira.fields.issuetype.name,
+		//Story Points
 		jira.fields["customfield_10004"],
+		//Descriptions
 		jira.fields.summary,
+		//Assigned
 		jira.fields.assignee.displayName,
-		jira.fields.issuetype.name,
-        jira.fields["customfield_10261"],
-        jira.fields["customfield_10870"],
-		jira.fields.parent ? jira.fields.parent.key : null,
+		//Component
+        jira.fields.issuetype.id,
+        //tag-date?
+        jira.fields.created,
+        //epic?
+        jira.fields.issuetype.id,
+		//parenet ID
+        jira.fields.parent ? jira.fields.parent.key : null,
+		//subtasks
         jira.fields.subtasks.map(function(_) {return _.key})
 	);
 	return card;

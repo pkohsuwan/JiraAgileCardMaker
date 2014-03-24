@@ -19,7 +19,7 @@ select {
 	background-color: white;
 	margin: auto;
 	float: left;
-	width: 335px;
+	width: 535px;
 	position: relative;
 	margin-left: 20px;
 	height: 320px;
@@ -43,7 +43,7 @@ select {
 	width: 70px;
 	height: 267px;
 	clear: both;
-	top: 52px;
+	top: 152px;
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -117,19 +117,32 @@ select {
 	font-weight: bolder;
 	float: left;
 	width: 35%;
-	line-height: 25px;
+	line-height: 16px;
 }
+
 
 .estimate {
 	width: 15%;
 }
+.estimate-number{
+	font-size: 250%;
+	font-weight: bold;
+}
 
-.actual {
-	width: 15%;
+.issueType {
+	width: 25%;
+	font-size: 150%;
+	
 }
 
 .owner {
-	width: 35%;
+	width: 25%;
+	font-size: 110%;
+}
+.assignee {
+	width: 25%;
+	font-weight:bold;
+	font-size: 110%;
 }
 
 .Doc, .Demo, .Review, .Rel_Note, .Wiki {
@@ -158,9 +171,13 @@ select {
 }
 
 .parentSummary, .component {
+	content:"Assignee";
 	font-weight: bolder;
 	display: block;
 	padding-bottom: 1em;
+}
+compoent:before{
+	content:"Assignee";
 }
 
 .tag {
@@ -170,6 +187,7 @@ select {
 	padding: 1em;
 	font-size: 23px;
 	position: absolute;
+
 }
 
 .businessvalue {

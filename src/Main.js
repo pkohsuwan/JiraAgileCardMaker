@@ -139,14 +139,14 @@ function drawExampleCard() {
 	if (document.getElementById("example-card") != null ) {
 
 		var card = {
-			"issueId": "PCTCUT-511",
-			"issueUrl": "https://jira.caplin.com/browse/PCTCUT-511",
-			"issueType": "Technical task",
+			"issueId": "DEV-1074",
+			"issueUrl": "https://mir3engineering.atlassian.net/browse/DEV-1074",
+			"issueType": "Story or Bug",
 			"checkBoxes": ["Rel Note", "Wiki", "Review"],
 			"estimate": 3,
 			"summary": "A tech task.",
-			"component": "COMP",
-			"tag": "TAG",
+			"component": "Owner2",
+			"tag": "Type",
 			"parentIssueId": "PCTCUT-523",
 			"colorEnabled": true,
 			"qrCodeEnabled": true,
@@ -222,12 +222,12 @@ function setConfigFromCookies() {
 	if (location != null && document.getElementById("jiraLocation") != null) {
 		document.getElementById("jiraLocation").value = location;
         setConfigFromBooleanCookie("color", "colorEnabled", true);
-		setConfigFromBooleanCookie("qrcode", "qrCodeEnabled", false);
+		setConfigFromBooleanCookie("qrcode", "qrCodeEnabled", true);
 		setConfigFromBooleanCookie("parentdescription", "parentDescriptionEnabled", true);
 		setConfigFromBooleanCookie("componentdescription", "componentEnabled", true);
 		setConfigFromBooleanCookie("tagdescription", "tagEnabled", true);
 		setConfigFromBooleanCookie("businessvalue", "businessValueEnabled", false);
-        setConfigFromBooleanCookie("epicsEnabled", "epicsEnabled", true);
+        setConfigFromBooleanCookie("epicsEnabled", "epicsEnabled", false);
 	//	document.getElementById("project").value = Cookies.get("projectName") || "";
 	//	document.getElementById("fixversion").value = Cookies.get("fixVersion") || ""
 	//	document.getElementById("wizard").value = Cookies.get("wizard") || "https://jira.springsource.org/browse/BATCH/fixforversion/11327";
