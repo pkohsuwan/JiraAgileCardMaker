@@ -25,7 +25,7 @@ var Card = function (issueId, issueUrl, issueType, estimate, summary, assignee, 
 	this.issueType = issueType;
 	this.estimate = estimate;
 	this.summary = summary;
-	this.assignee = assignee;
+	this.assignee= assignee;
 	this.component = component;
 	
 	var love = tag.split("T")

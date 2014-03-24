@@ -91,7 +91,16 @@ JiraApiHandler.prototype.createCard = function (jira) {
 		}
 		componentString = componentsString.substring(0, componentsString.length - 1) + ":";
 	}
-	
+var name= ""; 
+
+if(jira.fields.assignee == null)
+		{
+	name =" TDB";
+		}
+else
+	{
+	name=jira.fields.assignee.displayName;
+	}
 
 	//var Card = function (issueId, issueUrl, issueType, estimate, summary, assignee, component, tag, epic, parentIssueId, subtasks) {
 	var card = new Card(
@@ -106,7 +115,8 @@ JiraApiHandler.prototype.createCard = function (jira) {
 		//Descriptions
 		jira.fields.summary,
 		//Assigned
-		jira.fields.assignee.displayName,
+		name,
+		//jira.fields.assignee.displayName,
 		//Component
         jira.fields.issuetype.id,
         //tag-date?
