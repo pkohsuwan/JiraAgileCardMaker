@@ -29,6 +29,8 @@ CardView.prototype.getCardParentSummary = function() {
 	return parentIssue != null ? parentIssue.summary : null;
 }
 
+
+//top line of card displays
 CardView.prototype.addTitle = function (issueId, estimate, issueType, parent,assignee) {
 	var titleElement = document.createElement("div");
 	titleElement.className = "titleRow";
@@ -57,15 +59,11 @@ CardView.prototype.addTitle = function (issueId, estimate, issueType, parent,ass
 	assigneeElement.className += " assignee";	
 	
 //	
-//	var ownerElement = this.createTitleElement("Owner");
-//	ownerElement.className += " owner";
 
 	titleElement.appendChild(issueIdElement);
 	titleElement.appendChild(estimateElement);
 	titleElement.appendChild(issueTypeElement);
 	titleElement.appendChild(assigneeElement);
-	
-	//titleElement.appendChild(ownerElement);
 	
 	this.element.appendChild(titleElement);
 };
@@ -76,15 +74,16 @@ CardView.prototype.addSummary = function (summary, parentSummary, component, tag
 	var sideElement = document.createElement("div");
 	sideElement.className = "summaryElement";
 
-    if (this.isComponentEnabled && component != null) {
-        sideElement.innerHTML += "<span class='component'>" + component + "</span>";
-    }
+  //  if (this.isComponentEnabled && component != null) {
+        //sideElement.innerHTML += "<span class='component'>" + component + "</span>";
+   //
+
 
     if (this.isEpicEnabled && epic != null) {
         var epicData = epics.filter(function(_) {
             return _.key === epic
         })[0];
-       // sideElement.innerHTML += "<span class='epic' style='background-color: " + epicData.epicColor + "'>" + epicData.epicLabel + "</span>";
+        sideElement.innerHTML += "<span class='componentepic' style='background-color: " + epicData.epicColor + "'>" + epicData.epicLabel + "</span>";
     }
 
 	if (this.isParentDescriptionEnabled && parentSummary != null) {

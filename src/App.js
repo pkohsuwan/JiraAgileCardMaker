@@ -69,7 +69,7 @@ jira.App.prototype.addTicket = function(card) {
 };
 
 jira.App.prototype.getPageForNewCard = function() {
-	if (this.currentPage == null || this.cardsAdded % 6 === 0) {
+	if (this.currentPage == null || this.cardsAdded % 3 == 0) {
 		this.currentPage = document.createElement("div");
 		this.currentPage.className = "page";
 		this.element.appendChild(this.currentPage);

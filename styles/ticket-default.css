@@ -1,6 +1,7 @@
 .page {
-	page-break-before: always;
+	/*page-break-before: always;*/
 	clear: both;
+	
 }
 
 .project {
@@ -19,10 +20,10 @@ select {
 	background-color: white;
 	margin: auto;
 	float: left;
-	width: 535px;
+	width: 500px;
 	position: relative;
 	margin-left: 20px;
-	height: 320px;
+	height: 280px;
 	margin-top: 20px;
 	border: 2px solid black;
 }
@@ -135,10 +136,7 @@ select {
 	
 }
 
-.owner {
-	width: 25%;
-	font-size: 110%;
-}
+
 .assignee {
 	width: 25%;
 	font-weight:bold;
@@ -152,7 +150,7 @@ select {
 
 .qrcode {
 	width: 100%;
-	height: 88px;
+	height: 82px;
 }
 
 .qrcode img {
@@ -170,20 +168,23 @@ select {
 	height: 200px;
 }
 
-.parentSummary, .component {
-	content:"Assignee";
+.componentepic {
 	font-weight: bolder;
 	display: block;
 	padding-bottom: 1em;
 }
-compoent:before{
-	content:"Assignee";
+
+.component {
+	font-weight: bolder;
+	display: block;
+	padding-bottom: 1em;
 }
+
 
 .tag {
 	width: 70px;
 	height: 20px;
-	margin-top: 200px;
+	margin-top: 180px;
 	padding: 1em;
 	font-size: 23px;
 	position: absolute;

@@ -138,19 +138,21 @@ function drawExampleCard() {
 
 	if (document.getElementById("example-card") != null ) {
 
+		//var Card = function (issueId, issueUrl, issueType, estimate, summary, assignee, tag, epic, parentIssueId, subtasks) {
 		var card = {
 			"issueId": "DEV-1074",
 			"issueUrl": "https://mir3engineering.atlassian.net/browse/DEV-1074",
 			"issueType": "Story or Bug",
 			"checkBoxes": ["Rel Note", "Wiki", "Review"],
 			"estimate": 3,
+			"assignee": "Assign To",
 			"summary": "A tech task.",
-			"component": "Owner2",
-			"tag": "Type",
+			"tag": "Date",
+			"componentepic":"EpIC",
 			"parentIssueId": "PCTCUT-523",
 			"colorEnabled": true,
 			"qrCodeEnabled": true,
-			"businessvalue": "6"
+			"businessvalue": "Date2"
 		}
 
 		var parentCard = {
@@ -159,7 +161,7 @@ function drawExampleCard() {
 			"issueType": "Story",
 			"checkBoxes": ["Doc", "Demo", "Review"],
 			"estimate": 2,
-			"summary": "A marvelous summary.",
+			"summary": "EPIC.	"  ,
 			"component": "COMP",
 			"tag": "TAG",
 			"parentSummary": "A parent summary",
@@ -169,7 +171,7 @@ function drawExampleCard() {
 		};
 
 		var parentMap = {};
-		var ticket = new Card(card.issueId, card.issueUrl, card.issueType, card.estimate, card.summary, card.component, card.tag, card.businessvalue, card.parentIssueId);
+		var ticket = new Card(card.issueId, card.issueUrl, card.issueType, card.estimate, card.summary, card.assignee, card.tag, card.componentepic, card.businessvalue, card.parentIssueId);
 
 		parentMap[card.issueId] = card;
 		parentMap[parentCard.issueId] = parentCard;
@@ -227,7 +229,7 @@ function setConfigFromCookies() {
 		setConfigFromBooleanCookie("componentdescription", "componentEnabled", true);
 		setConfigFromBooleanCookie("tagdescription", "tagEnabled", true);
 		setConfigFromBooleanCookie("businessvalue", "businessValueEnabled", false);
-        setConfigFromBooleanCookie("epicsEnabled", "epicsEnabled", false);
+        setConfigFromBooleanCookie("epicsEnabled", "epicsEnabled", true);
 	//	document.getElementById("project").value = Cookies.get("projectName") || "";
 	//	document.getElementById("fixversion").value = Cookies.get("fixVersion") || ""
 	//	document.getElementById("wizard").value = Cookies.get("wizard") || "https://jira.springsource.org/browse/BATCH/fixforversion/11327";
