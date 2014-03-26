@@ -74,7 +74,7 @@ CardView.prototype.addSummary = function (summary, parentSummary, component, tag
 	var sideElement = document.createElement("div");
 	sideElement.className = "summaryElement";
 
-    if (this.isComponentEnabled) {
+    if (this.isComponentEnabled && componpent !=null) {
         sideElement.innerHTML += "<span class='component'>" + component + "</span>";
     }
 
