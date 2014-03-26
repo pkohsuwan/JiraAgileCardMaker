@@ -147,8 +147,9 @@ function drawExampleCard() {
 			"estimate": 3,
 			"assignee": "Assign To",
 			"summary": "A tech task.",
-			"tag": "Date",
-			"componentepic":"EpIC",
+			"component":"EPIC",
+			"tag": "Date TAG",
+			"componentepic":"The EPIC",
 			"parentIssueId": "PCTCUT-523",
 			"colorEnabled": true,
 			"qrCodeEnabled": true,
@@ -161,7 +162,7 @@ function drawExampleCard() {
 			"issueType": "Story",
 			"checkBoxes": ["Doc", "Demo", "Review"],
 			"estimate": 2,
-			"summary": "EPIC.	"  ,
+			"summary": "TO DO:.	"  ,
 			"component": "COMP",
 			"tag": "TAG",
 			"parentSummary": "A parent summary",
@@ -171,7 +172,7 @@ function drawExampleCard() {
 		};
 
 		var parentMap = {};
-		var ticket = new Card(card.issueId, card.issueUrl, card.issueType, card.estimate, card.summary, card.assignee, card.tag, card.componentepic, card.businessvalue, card.parentIssueId);
+		var ticket = new Card(card.issueId, card.issueUrl, card.issueType, card.estimate, card.summary, card.component, card.assignee, card.tag, card.componentepic, card.businessvalue, card.parentIssueId);
 
 		parentMap[card.issueId] = card;
 		parentMap[parentCard.issueId] = parentCard;

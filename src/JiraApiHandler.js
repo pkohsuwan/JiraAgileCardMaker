@@ -140,10 +140,10 @@ var epicName = "";
 		jira.fields["customfield_10004"],
 		//Descriptions
 		jira.fields.summary,
+		//Component
+		epicName,
 		//Assigned
 		name,
-		//jira.fields.assignee.displayName,
-		//Component
         //tag-date?
         jira.fields.created,
         //epic?

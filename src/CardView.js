@@ -74,15 +74,16 @@ CardView.prototype.addSummary = function (summary, parentSummary, component, tag
 	var sideElement = document.createElement("div");
 	sideElement.className = "summaryElement";
 
-  //  if (this.isComponentEnabled && component != null) {
-        //sideElement.innerHTML += "<span class='component'>" + component + "</span>";
-   //
+    if (this.isComponentEnabled) {
+        sideElement.innerHTML += "<span class='component'>" + component + "</span>";
+    }
 
 
     if (this.isEpicEnabled && epic != null) {
         var epicData = epics.filter(function(_) {
             return _.key === epic
         })[0];
+        
         sideElement.innerHTML += "<span class='componentepic' style='background-color: " + epicData.epicColor + "'>" + epicData.epicLabel + "</span>";
     }
 
