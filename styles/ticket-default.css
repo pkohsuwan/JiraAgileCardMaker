@@ -20,10 +20,10 @@ select {
 	background-color: white;
 	margin: auto;
 	float: left;
-	width: 500px;
+	width: 560px;
 	position: relative;
 	margin-left: 20px;
-	height: 280px;
+	height: 300px;
 	margin-top: 20px;
 	border: 2px solid black;
 }
@@ -183,7 +183,7 @@ select {
 .tag {
 	width: 70px;
 	height: 20px;
-	margin-top: 180px;
+	margin-top: 200px;
 	padding: 1em;
 	font-size: 23px;
 	position: absolute;

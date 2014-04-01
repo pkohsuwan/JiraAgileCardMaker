@@ -98,7 +98,7 @@ JiraApiHandler.prototype.createCard = function (jira) {
  * */	
 var name= ""; 
 
-if(jira.fields.assignee == null){name =" To be Picked up";}
+if(jira.fields.assignee == null){name =" Unassigned";}
 else
 	{name=jira.fields.assignee.displayName;}
 
@@ -142,9 +142,9 @@ var epicName = "";
 		jira.fields.summary,
 		//Component
 		epicName,
-		//Assigned
+		//Assigned to
 		name,
-        //tag-date?
+        //tag-Date created
         jira.fields.created,
         //epic?
         jira.fields["customfield_10008"],
