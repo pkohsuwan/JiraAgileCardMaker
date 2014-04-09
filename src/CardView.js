@@ -122,6 +122,7 @@ CardView.prototype.addSideBar = function (bAddQRCode, url) {
 		//sideElement.appendChild(element);
 	}
 
+
 	if (bAddQRCode) {
 		var qrcodeElement = this.createTitleElement("QRCode");
 		qrcodeElement.className += " qrcode";

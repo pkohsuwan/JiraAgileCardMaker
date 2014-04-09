@@ -150,7 +150,7 @@ select {
 
 .qrcode {
 	width: 100%;
-	height: 82px;
+	height: 62px;
 }
 
 .qrcode img {
@@ -169,14 +169,23 @@ select {
 }
 
 .componentepic {
-	font-weight: bolder;
+	
+	text-align:right;
 	display: block;
 	padding-bottom: 1em;
+	font-size: 18px;
+	font-style: italic;
+
+
 }
 
 .component {
+    margin-left: 200px;
 	font-weight: bolder;
 	display: block;
+	font-size: 18px;
+	font-style: italic;
+	text-align:right;
 }
 
 
