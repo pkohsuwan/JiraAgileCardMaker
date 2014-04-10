@@ -17,7 +17,7 @@ CardView.prototype.getElement = function () {
 		this.element = document.createElement('div');
 		this.element.className = "ticket "+(this.isColorEnabled ? "color" : "mono")+" "+this.cardModel.issueType.replace(" ", "_");
 
-		this.addTitle(this.cardModel.issueId, this.cardModel.estimate, this.cardModel.parentIssueId);
+		this.addTitle(this.cardModel.issueId, this.cardModel.estimate, this.cardModel.issueType, this.cardModel.parentIssueId,this.cardModel.assignee );
 		this.addSideBar(this.isQRCodeEnabled, this.cardModel.issueUrl);
 		this.addSummary(this.cardModel.summary, this.getCardParentSummary(), this.cardModel.component, this.cardModel.tag, this.cardModel.businessValue, this.cardModel.epic);
 	}
@@ -29,7 +29,9 @@ CardView.prototype.getCardParentSummary = function() {
 	return parentIssue != null ? parentIssue.summary : null;
 }
 
-CardView.prototype.addTitle = function (issueId, estimate, parent) {
+
+//top line of card displays
+CardView.prototype.addTitle = function (issueId, estimate, issueType, parent,assignee) {
 	var titleElement = document.createElement("div");
 	titleElement.className = "titleRow";
 
@@ -37,35 +39,52 @@ CardView.prototype.addTitle = function (issueId, estimate, parent) {
 	issueIdElement.className += " key";
 
 	var estimateElement = this.createTitleElement(estimate || "Estimate");
+	if (estimate) {
+
+			estimateElement.className += " estimate-number";
+
+			}
 	estimateElement.className += " estimate";
 
-	var actualElement = this.createTitleElement("Actual");
-	actualElement.className += " actual";
 
-	var ownerElement = this.createTitleElement("Owner");
-	ownerElement.className += " owner";
+	var issueTypeElement = this.createTitleElement(issueType);
+	issueTypeElement.className += " issueType";
+
+	var assigneeElement = this.createTitleElement(assignee || "assignee");
+	if (assignee) {
+
+		assigneeElement.className += " assignee";
+
+			}
+	assigneeElement.className += " assignee";	
+	
+//	
 
 	titleElement.appendChild(issueIdElement);
 	titleElement.appendChild(estimateElement);
-	titleElement.appendChild(actualElement);
-	titleElement.appendChild(ownerElement);
-
+	titleElement.appendChild(issueTypeElement);
+	titleElement.appendChild(assigneeElement);
+	
 	this.element.appendChild(titleElement);
 };
+
+
 
 CardView.prototype.addSummary = function (summary, parentSummary, component, tag, businessvalue, epic) {
 	var sideElement = document.createElement("div");
 	sideElement.className = "summaryElement";
 
-    if (this.isComponentEnabled && component != null) {
+    if (this.isComponentEnabled && component !=null) {
         sideElement.innerHTML += "<span class='component'>" + component + "</span>";
     }
+
 
     if (this.isEpicEnabled && epic != null) {
         var epicData = epics.filter(function(_) {
             return _.key === epic
         })[0];
-        sideElement.innerHTML += "<span class='epic' style='background-color: " + epicData.epicColor + "'>" + epicData.epicLabel + "</span>";
+        
+        sideElement.innerHTML += "<span class='componentepic' style='background-color: " + epicData.epicColor + "'>" + epicData.epicLabel + "</span>";
     }
 
 	if (this.isParentDescriptionEnabled && parentSummary != null) {
@@ -78,6 +97,7 @@ CardView.prototype.addSummary = function (summary, parentSummary, component, tag
 		var tagElement = document.createElement("div");
 		tagElement.className = "tag";
 		tagElement.innerHTML = tag;
+		
 		this.element.appendChild(tagElement);
 	}
 
@@ -99,8 +119,9 @@ CardView.prototype.addSideBar = function (bAddQRCode, url) {
 		var checkBoxName = this.checkBoxes[i];
 		var element = this.createTitleElement(checkBoxName);
 		element.className += " "+checkBoxName.replace(" ", "_");
-		sideElement.appendChild(element);
+		//sideElement.appendChild(element);
 	}
+
 
 	if (bAddQRCode) {
 		var qrcodeElement = this.createTitleElement("QRCode");

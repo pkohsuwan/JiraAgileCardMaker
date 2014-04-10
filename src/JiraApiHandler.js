@@ -92,19 +92,68 @@ JiraApiHandler.prototype.createCard = function (jira) {
 		componentString = componentsString.substring(0, componentsString.length - 1) + ":";
 	}
 	
-//var Card = function (issueId, issueUrl, issueType, storypoints, summary, component, tag, businessValue, epic, parentIssueId, subtasks)	
-	var card = new Card(jira.key,
+/*
+ *Formating for Mir3 Tickets, I want the test case if the ticket has not been Assigned yet to not throw an error and print out TBD.
+ *Getting the Epic names to print on the cards, using switch cases to check the custom field. 
+ * */	
+var name= ""; 
+
+if(jira.fields.assignee == null){name =" Unassigned";}
+else
+	{name=jira.fields.assignee.displayName;}
+
+
+
+
+var epicName = "";
+
+/*var epic = jira.fields["customfield_10008"];
+	if(epic=="DEV-339"){epicName="Bugs-DEV"; }
+	else if(epic=="DEV-792"){epicName="Bugs-QA"; }	
+	else if(epic=="DEV-234"){epicName="Mobile App"; }
+	else if(epic=="DEV-693"){epicName="DataSync"; }
+	else if(epic=="DEV-976"){epicName="DBA"; }
+	else if(epic=="DEV-115"){epicName="Documentation"; }
+	else if(epic=="DEV-244"){epicName="New Compose Verbiage"; }
+	else if(epic=="DEV-203"){epicName="Professional Services"; }
+	else if(epic=="DEV-1020"){epicName="Reports Page- White Screen"; }
+	else if(epic=="DEV-1021"){epicName="Reports Page - Zero Counters"; }
+	else if(epic=="DEV-439"){epicName="Security"; }
+	else if(epic=="DEV-232"){epicName="Quick Launch"; }
+	else if(epic=="DEV-82"){epicName="User Data MongoDB"; }
+	else if(epic=="DEV-338"){epicName="Support"; }
+	else{epicName="  NO Epic Assigned";}
+	*/
+
+
+
+
+	//var Card = function (issueId, issueUrl, issueType, estimate, summary, assignee, tag, epic, parentIssueId, subtasks) {
+	var card = new Card(
+		//Issue id
+		jira.key,
+		// URL
 		this.baseUrl + "/browse/" + jira.key,
+		//Story or Bug
 		jira.fields.issuetype.name,
+		//Story Points
 		jira.fields["customfield_10004"],
+		//Descriptions
 		jira.fields.summary,
-		jira.fields.assignee.displayName,
-		jira.fields.issuetype.name,
-        jira.fields["customfield_10261"],
-        jira.fields["customfield_10870"],
-		jira.fields.parent ? jira.fields.parent.key : null,
+		//Component
+		epicName,
+		//Assigned to
+		name,
+        //tag-Date created
+        jira.fields.created,
+        //epic?
+        jira.fields["customfield_10008"],
+		//parenet ID
+        jira.fields.parent ? jira.fields.parent.key : null,
+		//subtasks
         jira.fields.subtasks.map(function(_) {return _.key})
 	);
+
 	return card;
 };
 

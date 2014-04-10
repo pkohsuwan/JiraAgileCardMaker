@@ -1,5 +1,5 @@
 .page {
-	page-break-before: always;
+	/*page-break-before: always;*/
 	clear: both;
 }
 
@@ -104,7 +104,7 @@
 	width: 42px;
 }
 
-.actual {
+.issueType {
 	width: 50px;
 }
 
